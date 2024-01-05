@@ -1,0 +1,23 @@
+.search-box{
+    width: 40rem;
+    height: 3rem;
+    padding-left: 1rem;
+}
+.search-box-div{
+    display: grid;
+    justify-content: center;
+}
+.relative-div{
+    position: relative;
+}
+.button-style{
+    cursor: pointer;
+    width: 5rem;
+    height: 3rem;
+    border-width: 1px;
+    border-style: hidden;
+    border-color: black;
+    background-color: transparent;
+    position: absolute;
+    right: 0;
+}

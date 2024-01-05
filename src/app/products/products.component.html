@@ -1,0 +1,43 @@
+<app-filter
+  [all]="totalCount"
+  [inStock]="inStockCount"
+  [outOfStock]="OutOfStockCount"
+  (onSelectedFilterButtonChanged)="onFilterChange($event)"
+></app-filter>
+<div class="content gap-4">
+  <div *ngFor="let prod of products" (click) = "selectedProduct = prod">
+    <!-- *ngIf="
+    selectedRadioButton === 'all' ||
+    prod.stockAvailability.toString() === selectedRadioButton ||
+    prod.stockAvailability.toString() === selectedRadioButton
+  " width : 25rem ke baad ye upar wala ngIf daalne na if required in future-->
+    <div 
+      class="card" 
+      style="width: 25rem"
+      *ngIf="searchText === '' || prod.productName.toLowerCase().includes(searchText)"
+      >
+      <img [src]="prod.productImg" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">{{ prod.productName }}</h5>
+        <p class="card-text">{{ prod.productCategory }}</p>
+        <!-- <p
+          class="card-text"
+          [ngClass]="
+            prod.stockAvailability === true
+              ? 'text-success fw-bold'
+              : 'text-danger fw-bold'
+          "
+        >
+          {{prod.stockAvailability}}
+        </p> -->
+        <div class="card-text" [ngSwitch]="prod.stockAvailability">
+          <p *ngSwitchCase="true" class="text-success fw-bold">In Stock</p>
+          <p *ngSwitchCase="false" class="text-danger fw-bold">Out Of Stock</p>
+        </div>
+
+        <p class="card-text">{{ prod.productPrice | currency : "INR" }}</p>
+        <a class="btn btn-primary">Add To Cart</a>
+      </div>
+    </div>
+  </div>
+</div>

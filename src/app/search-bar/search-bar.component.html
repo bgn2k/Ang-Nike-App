@@ -1,0 +1,17 @@
+<div class="container mt-5 search-box-div mb-3">
+  <div class="relative-div">
+    <input
+      name="searchInput"
+      #search
+      class="search-box"
+      type="text"
+      placeholder="Search for Products, Brands and More"
+      (keydown.enter)="setSearchText(search)"
+    />
+    <button class="button-style"  (click)="setSearchText(search)">
+      <img src="assets/SearchIcon.png" alt="Search" />
+    </button>
+  </div>
+
+  <p class="mt-3">You Searched For: {{ searchInput }}</p>
+</div>
